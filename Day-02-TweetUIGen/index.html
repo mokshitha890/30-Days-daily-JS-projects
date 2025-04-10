@@ -1,0 +1,60 @@
+<html lang="en">
+
+<head>
+    <title>tweet generator</title>
+    <link rel="stylesheet" href="tweet.css">
+</head>
+
+<body>
+    <div class="title">Tweet Generator</div>
+    <div class="tweet-container">
+    </div>
+    <script>
+        fetch('./tweet.json')
+            .then(response => response.json())
+            .then(data => {
+                RenderTweets(data.tweets);
+
+            });
+        function buildUI(tweet, depth) {
+            let html = `<div style="margin-left: ${depth * 20}px; margin-top:5px"> <div class="container">
+        <div class="profile-pic">
+            <img src="https://placehold.co/40" alt="" class="avathar">
+        </div>
+        <div class="main-content">
+            <div class="user-data">
+                <div class="user-name">
+                    <span class="user-name-1">${tweet.user.name}</span> <span class="handler">${tweet.user.username} Depth ${depth}</span>
+                </div>
+                <div class="time-stamp">${tweet.timestamp}</div>
+            </div>
+            <div class="user-content">
+                <div class="user-tweet">${tweet.content}</div>
+                <div class="like-and-tweet">
+                    <span class="likes">${tweet.likes}</span>
+                    <span class="retweet">${tweet.retweets}</span>
+                    <span class="reply">${(tweet.replies.length)}</span>
+                </div>
+
+            </div>
+
+        </div>
+        </div>
+        
+    </div >
+                        `
+            document.getElementsByClassName("tweet-container")[0].insertAdjacentHTML('beforeend', html)
+        }
+        function RenderTweets(tweets, depth = 0) {
+            tweets.forEach((tweet) => {
+                buildUI(tweet, depth)
+                if (tweet.replies.length > 0) {
+                    RenderTweets(tweet.replies, depth + 1)
+                }
+            });
+        }
+
+    </script>
+</body>
+
+</html>

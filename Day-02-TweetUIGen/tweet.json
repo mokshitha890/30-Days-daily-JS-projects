@@ -1,0 +1,99 @@
+{
+  "tweets": [
+    {
+      "id": 1,
+      "user": {
+        "name": "Alice",
+        "username": "@alice123",
+        "profilePic": "https://example.com/alice.jpg"
+      },
+      "content": "Excited to start my new project! 🚀 #coding",
+      "timestamp": "2025-04-04T10:00:00Z",
+      "likes": 120,
+      "retweets": 45,
+      "replies": [
+        {
+          "id": 11,
+          "user": {
+            "name": "Bob",
+            "username": "@bob_dev",
+            "profilePic": "https://example.com/bob.jpg"
+          },
+          "content": "That's awesome! What are you building?",
+          "timestamp": "2025-04-04T10:05:00Z",
+          "likes": 15,
+          "retweets": 2,
+          "replies": [
+            {
+              "id": 111,
+              "user": {
+                "name": "Alice",
+                "username": "@alice123",
+                "profilePic": "https://example.com/alice.jpg"
+              },
+              "content": "A recursive tweet thread system 😃",
+              "timestamp": "2025-04-04T10:07:00Z",
+              "likes": 30,
+              "retweets": 5,
+              "replies": [
+                {
+                  "id": 1111,
+                  "user": {
+                    "name": "Yash",
+                    "username": "@charlie_coder",
+                    "profilePic": "https://example.com/charlie.jpg"
+                  },
+                  "content": "YASH,That sounds really interesting! Keep us updated. 😊",
+                  "timestamp": "2025-04-04T10:10:00Z",
+                  "likes": 20,
+                  "retweets": 3,
+                  "replies": []
+                }
+              ]
+            },
+            {
+              "id": 1112,
+              "user": {
+                "name": "mokshi",
+                "username": "@mok123",
+                "profilePic": "https://example.com/alice.jpg"
+              },
+              "content": "MOK : A recursive tweet thread system 😃",
+              "timestamp": "2025-04-04T10:07:00Z",
+              "likes": 30,
+              "retweets": 5,
+              "replies": [
+                {
+                  "id": 1111,
+                  "user": {
+                    "name": "Yash",
+                    "username": "@charlie_coder",
+                    "profilePic": "https://example.com/charlie.jpg"
+                  },
+                  "content": "YASH,That sounds really interesting! Keep us updated. 😊",
+                  "timestamp": "2025-04-04T10:10:00Z",
+                  "likes": 20,
+                  "retweets": 3,
+                  "replies": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "user": {
+            "name": "Eve",
+            "username": "@eve_tech",
+            "profilePic": "https://example.com/eve.jpg"
+          },
+          "content": "Looking forward to seeing the final result! 🚀",
+          "timestamp": "2025-04-04T10:15:00Z",
+          "likes": 10,
+          "retweets": 1,
+          "replies": []
+        }
+      ]
+    }
+  ]
+}
