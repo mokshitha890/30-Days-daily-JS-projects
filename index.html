@@ -80,23 +80,23 @@
             <div class="project-image">
                 <img src="./images/preview-calculator.png" alt="">
             </div>
-            <p>calculator is working only for basic usage not scintific cal</p>
+            <p>calculator is working only for basic usage not scientific cal</p>
 
         </div>
-        <div class="project-content">
+        <div class="project-content" data-folderId="Day-02-TweetUIGen">
             <div class="project-name">tweetgen</div>
             <div class="project-image">
                 <img src="./images/preview-tweetgen.png" alt="">
             </div>
-            <p>calculator is working only for basic usage not scintific cal</p>
+            <p>calculator is working only for basic usage not scientific cal</p>
 
         </div>
-        <div class="project-content">
+        <div class="project-content" data-folderId="Day-03-RecursiveMazeSolver">
             <div class="project-name">maze solver</div>
             <div class="project-image">
                 <img src="./images/preview-maze.png" alt="">
             </div>
-            <div class="project-details"></div>
+            <p>calculator is working only for basic usage not scientific cal</p>
         </div>
 
     </div>
@@ -106,17 +106,18 @@
     </div>
     <script>
 
-        document.querySelector('.project-content').addEventListener("click", (event) => {
-            if (event.target !== event.currentTarget) {
-                // const SelectedNumber = event.target.getAttribute('data-number')
-                // Addvalues(SelectedNumber)
-            }
+        document.querySelectorAll('.project-content').forEach((el) => {
+            el.addEventListener("click", (event) => {
+                console.log('clicked')
+                if (event.target !== event.currentTarget) {
+                    // const SelectedNumber = event.target.getAttribute('data-number')
+                    // Addvalues(SelectedNumber)
+                }
 
-            const folderId = event.currentTarget.getAttribute('data-folderId')
-
-            window.open('/' + folderId, '_blank').focus();
-
-
+                const folderId = event.currentTarget.getAttribute('data-folderId')
+                console.log(folderId)
+                window.open('/' + folderId, '_blank').focus();
+            })
         })
     </script>
 </body>
