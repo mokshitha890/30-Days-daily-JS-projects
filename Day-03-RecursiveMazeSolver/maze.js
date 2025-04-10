@@ -12,11 +12,13 @@ function SolveMaze(maze, x, y) {
         return true;
     }
 
-    if (document.getElementById(`cell-${x}-${y}`).style.backgroundColor === 'yellow') {
+    // if (document.getElementById(`cell-${x}-${y}`).style.backgroundColor === 'yellow') {
+    if (parseInt(document.getElementById(`cell-${x}-${y}`).getAttribute('data-visited'))) {
         console.log(x, y + "already visted")
         return false
     }
-    document.getElementById(`cell-${x}-${y}`).style.backgroundColor = "yellow";
+    // document.getElementById(`cell-${x}-${y}`).style.backgroundColor = "yellow";
+    document.getElementById(`cell-${x}-${y}`).setAttribute('data-visited', 1)
     if (
         SolveMaze(maze, x + 1, y) ||
         SolveMaze(maze, x - 1, y) ||
@@ -43,7 +45,7 @@ function startSolving() {
 }
 buildUi();
 function buildUi() {
-    generateRandomMazeData(20, 90)
+    generateRandomMazeData(10, 40)
 
     let tableHTML = '';
     mazedata.forEach((row, rowIndex) => {
@@ -94,7 +96,6 @@ function generateRandomMazeData(rowLength, columnLength) {
 }
 
 function randomBinary(probabilityOfOne) {
-    // probabilityOfOne should be a number between 0 and 1 (e.g., 0.9 for 90%)
     return Math.random() < probabilityOfOne ? 1 : 0;
 }
 

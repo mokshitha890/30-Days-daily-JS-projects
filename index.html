@@ -5,11 +5,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30-Days-JS-projects</title>
+    <style>
+        h2 {
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: bold;
+            font-style: inherit;
+            text-align: center;
+            margin-top: 2%;
+            margin-left: 30%;
+            margin-right: 30%;
+            border: 4px;
+
+        }
+
+        .project-name {
+            font-size: x-large;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            width: 92vw;
+            gap: 50px;
+            margin-left: 1%;
+
+        }
+
+        .project-content {
+            display: grid;
+            padding: 10px;
+            /* grid-template-rows: 1fr 6fr 1fr; */
+            grid-template-rows: 30px 150px 60px;
+            row-gap: 2px;
+            column-gap: 5px;
+
+            border: 2px solid #f6f6f6;
+
+            cursor: pointer;
+
+        }
+
+        .project-content:hover {
+            box-shadow: 5px 5px #ffeeee;
+        }
+
+        .project-image {
+            height: 150px;
+        }
+
+        img {
+            /* display: block; */
+            width: 550px;
+            object-fit: cover;
+            height: 150px;
+            padding: 5px;
+        }
+
+        p {
+            font-size: larger;
+            padding: 2px;
+            margin: 12px;
+        }
+    </style>
 </head>
 
 <body>
-    <img src="/images/i.png" width="100px" height="200px" />
+    <h2>30 Days JS Projects</h2>
+    <div class="container">
+        <div class="project-content" data-folderId="Day-01-js-caluclator">
+            <div class="project-name">calculator</div>
+            <div class="project-image">
+                <img src="./images/preview-calculator.png" alt="">
+            </div>
+            <p>calculator is working only for basic usage not scintific cal</p>
 
+        </div>
+        <div class="project-content">
+            <div class="project-name">tweetgen</div>
+            <div class="project-image">
+                <img src="./images/preview-tweetgen.png" alt="">
+            </div>
+            <p>calculator is working only for basic usage not scintific cal</p>
+
+        </div>
+        <div class="project-content">
+            <div class="project-name">maze solver</div>
+            <div class="project-image">
+                <img src="./images/preview-maze.png" alt="">
+            </div>
+            <div class="project-details"></div>
+        </div>
+
+    </div>
+
+    <div class="project-details"></div>
+    </div>
+    </div>
+    <script>
+
+        document.querySelector('.project-content').addEventListener("click", (event) => {
+            if (event.target !== event.currentTarget) {
+                // const SelectedNumber = event.target.getAttribute('data-number')
+                // Addvalues(SelectedNumber)
+            }
+
+            const folderId = event.currentTarget.getAttribute('data-folderId')
+
+            window.open('/' + folderId, '_blank').focus();
+
+
+        })
+    </script>
 </body>
 
 </html>
