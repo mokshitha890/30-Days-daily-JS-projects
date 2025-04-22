@@ -1,0 +1,115 @@
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+    <title>Flight Weather Info</title>
+    <link rel="stylesheet" href="flight.css">
+    <link rel="stylesheet"
+        href="https://fonts.google.com/share?selection.family=Roboto:ital,wght@0,100..900;1,100..900">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="main-container">
+        <nav class="navbar">
+            <img src="./icon-images/travel-icon.svg">
+            <h2><span style=" font-size: 3rem;">C</span>lear<span style=" font-size: 3rem;">S</span>kies</h2>
+        </nav>
+        <div class="container">
+            <div class="input-content">
+                <div class="input-wrap">
+                    <img src="./icon-images/plane-icon.svg">
+                    <input id="flight-number" class="flight-number" type="text">
+                </div>
+                <div class="input-wrap">
+                    <img src="./icon-images/location.svg">
+                    <input id="location" class="location" type="text">
+                </div>
+                <div class="input-wrap">
+
+                    <input id="date" class="date" type="date" placeholder="date" value="2025-04-29">
+                </div>
+                <button class="input-wrap" id="search_bar">search</button>
+            </div>
+            <div style="background-color: red;color: white;width: 100%;padding: 1rem;font-size: 1.25rem;
+            text-align: center;display: flex; justify-content: space-around; flex-direction: row;align-items: center;"
+                id="error-info">
+                <span>something went wrong please try again later</span>
+                <span style="background-color: rgb(17, 17, 17);
+                border-radius: 25px;
+                padding: 1px;
+                font-size: 22px;
+                width: 40px;
+                height: 40px;
+                /* text-align: center; */
+                /* font-weight: 100; */
+                cursor: pointer;
+                color: bisque;
+                align-content: center;" id="error-close">X</span>
+            </div>
+
+            <div class="initial-info">
+                <p>Please enter the flight number, location, and date to retrieve the relevant flight and weather
+                    information.</p>
+            </div>
+            <div class="loading" style="display: none;">
+                <img src="./bouncing-circles.svg" alt="Loading...">
+                <p>Loading...</p>
+
+            </div>
+            <div class="display-card" style="display: none;">
+                <div class="top-content">
+                    <div class="left-card">
+                        <div class="tempt-data">
+                            <div class="tempt-data-info">
+                                <img src="./icon-images/cloud-drizzle.svg">
+                                <p>mostly sunny</p>
+                            </div>
+                            <div>25°c/39°F</div>
+                        </div>
+                        <div class="map">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    <div class="right-card">
+                        <div class="weather-info">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="weather-icon-info">
+                            <img src="./icon-images/cloud-drizzle.svg">
+                            <img src="./icon-images/slash.svg">
+                            <img src="./icon-images/eye-icon.svg">
+                        </div>
+                    </div>
+                </div>
+                <div class="buttom-content" id="ai-content">
+                    <md class="ai-md">ai generated content will be displayed</md>
+                    <md>
+                        #Markdown Support
+
+                        Awesomeness
+                    </md>
+                </div>
+            </div>
+            <div class="news" style="display: none;">
+                <p>please select flight number and location to display relevent news</p>
+
+            </div>
+        </div>
+    </div>
+    <script src="flight.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/MarketingPipeline/Markdown-Tag/markdown-tag.js"></script>
+</body>
+
+</html>
