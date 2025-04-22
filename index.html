@@ -99,6 +99,14 @@
             <p>calculator is working only for basic usage not scientific cal</p>
         </div>
 
+        <!-- Add the new Flight Weather Info project card -->
+        <div class="project-content" data-folderId="Day-04-FlightWeatherInfo">
+            <div class="project-name">Flight Weather Info</div>
+            <div class="project-image">
+                <img src="./images/preview-flights.png" alt="">
+            </div>
+            <p>Get flight information, weather data and related news for your travel destination</p>
+        </div>
     </div>
 
     <div class="project-details"></div>
@@ -116,7 +124,8 @@
 
                 const folderId = event.currentTarget.getAttribute('data-folderId')
                 console.log(folderId)
-                window.open('/' + folderId, '_blank').focus();
+                const feDir = folderId === "Day-04-FlightWeatherInfo" ? "/frontend" : "";
+                window.open('/' + folderId + feDir, '_blank').focus();
             })
         })
     </script>
