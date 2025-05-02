@@ -1,0 +1,135 @@
+<html lang="en">
+
+<head>
+    <title>AUDIO-A</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #87CEFA;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #4682B4;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Enter the amount to listen to voice </h2>
+    <input type="number" id="numberInput" placeholder="enter amount between 1-9000">
+    <div style="font-size: 10px; margin-top: 0.5rem;"> *Paisa will be rounded to next heiger amount eg (24.56 will be
+        25) </div>
+    <button id="playButton" onclick="playNumberAudio()">Play</button>
+    <span class="err" style="background-color: lightcoral; color: white; font-weight: 500;padding: 5px;display: block; width: 25rem; margin-left: 36%; margin-top: 5rem; text-align: center;
+        visibility: hidden;
+        ">
+        Please enter amount between 1 - 9999 only</span>
+    <script>
+
+        document.getElementById("numberInput").addEventListener("keydown", resetErr);
+
+        function resetErr(event) {
+            console.log("Key pressed:", event.target.value);
+            // Your error-handling logic here
+            // if it is empty
+            if (!event.target.value) {
+                let errElm = document.getElementsByClassName("err")[0];
+                errElm.style.visibility = 'hidden'; // to show
+            }
+        }
+
+        function breakDownNumber(num) {
+            let thousands = Math.floor(num / 1000);
+            let hundreds = Math.floor((num % 1000) / 100);
+            let tens = Math.floor((num % 100) / 10);
+            let ones = num % 10;
+            return { thousands, hundreds, tens, ones };
+        }
+
+        function playNumberAudio() {
+            let number = document.getElementById("numberInput").value;
+
+            let playButton = document.getElementById("playButton");
+            let errElm = document.getElementsByClassName("err")[0];
+            playButton.disabled = true; // Disable button while playing
+
+            console.log(number);
+            if (number < 0 || number > 9999 || isNaN(number) || number == 0) {
+                // alert("Please enter a number between 0 and 9999.");
+                console.log(errElm)
+                errElm.style.visibility = 'visible'; // to show
+                // errElm.style.visibility = 'visible'
+                playButton.disabled = false;
+                return;
+            }
+            number = Math.ceil(number)
+
+
+            let parts = breakDownNumber(number);
+            let audioQueue = [];
+
+            // Add "You received" part
+            audioQueue.push("./messages/part_1.mp3");
+
+            if (parts.thousands) audioQueue.push(`./1000-9000/${parts.thousands}000.mp3`);
+            if (parts.hundreds) audioQueue.push(`./100-900/${parts.hundreds}00.mp3`);
+            if (parts.tens === 1) {
+                let teenNumber = parts.tens * 10 + parts.ones;
+                audioQueue.push(`./10-90/${teenNumber}.mp3`);
+            } else {
+                if (parts.tens) audioQueue.push(`./10-90/${parts.tens}0.mp3`);
+                if (parts.ones) audioQueue.push(`./1-9/${parts.ones}.mp3`);
+            }
+
+            // Add "to your bank account" part
+            audioQueue.push("./messages/part_2.mp3");
+
+            playAudioSequence(audioQueue, playButton);
+        }
+
+        function playAudioSequence(audioFiles, playButton) {
+            if (audioFiles.length === 0) {
+                playButton.disabled = false; // Enable button after playback
+                return;
+            }
+            let audio = new Audio(audioFiles.shift());
+            audio.play();
+            audio.onended = () => playAudioSequence(audioFiles, playButton);
+        }
+    </script>
+</body>
+
+</html>
