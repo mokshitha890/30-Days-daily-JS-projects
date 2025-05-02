@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>30-Days-JS-projects</title>
     <style>
+        body {
+            font-family: 'Franklin Gothic basic', 'Arial Narrow', Arial, sans-serif;
+        }
+
         h2 {
             font-size: 50px;
             font-family: Arial, Helvetica, sans-serif;
@@ -21,7 +25,8 @@
 
         .project-name {
             font-size: x-large;
-            text-align: center;
+            text-align: start;
+            padding-left: 10px;
         }
 
         .container {
@@ -41,9 +46,7 @@
             grid-template-rows: 30px 150px 60px;
             row-gap: 2px;
             column-gap: 5px;
-
-            border: 2px solid #f6f6f6;
-
+            border: 2px solid #dedbdb;
             cursor: pointer;
 
         }
@@ -65,9 +68,10 @@
         }
 
         p {
-            font-size: larger;
-            padding: 2px;
-            margin: 12px;
+            font-size: large medium;
+            /* padding: 2px; */
+            margin: 8px;
+            color: rgb(87, 84, 84);
         }
     </style>
 </head>
@@ -76,28 +80,29 @@
     <h2>30 Days JS Projects</h2>
     <div class="container">
         <div class="project-content" data-folderId="Day-01-js-caluclator">
-            <div class="project-name">calculator</div>
+            <div class="project-name">Calculator</div>
             <div class="project-image">
                 <img src="./images/preview-calculator.png" alt="">
             </div>
-            <p>calculator is working only for basic usage not scientific cal</p>
+            <p>Normal mathematical calculator</p>
 
         </div>
         <div class="project-content" data-folderId="Day-02-TweetUIGen">
-            <div class="project-name">tweetgen</div>
+            <div class="project-name">Tweetgen</div>
             <div class="project-image">
                 <img src="./images/preview-tweetgen.png" alt="">
             </div>
-            <p>calculator is working only for basic usage not scientific cal</p>
+            <p>Tweet generator structure inspired from X</p>
 
         </div>
         <div class="project-content" data-folderId="Day-03-RecursiveMazeSolver">
-            <div class="project-name">maze solver</div>
+            <div class="project-name">Maze solver</div>
             <div class="project-image">
                 <img src="./images/preview-maze.png" alt="">
             </div>
-            <p>calculator is working only for basic usage not scientific cal</p>
+            <p>Automatic maize solver</p>
         </div>
+
 
         <!-- Add the new Flight Weather Info project card -->
         <div class="project-content" data-folderId="Day-04-FlightWeatherInfo">
@@ -105,7 +110,16 @@
             <div class="project-image">
                 <img src="./images/preview-flights.png" alt="">
             </div>
-            <p>Get flight information, weather data and related news for your travel destination</p>
+            <p>Get flight information, weather data and <br> related news for your travel destination</p>
+        </div>
+
+        <div class="project-content" data-folderId="Day-05-PhonePayVoiceMimic">
+            <div class="project-name">Phone pay voice mimic</div>
+            <div class="project-image">
+                <img src="./images/preview-audio.png" alt="">
+            </div>
+            <p>Voice-based payment confirmation system,<br> inspired by PhonePe
+            </p>
         </div>
     </div>
 
@@ -124,7 +138,16 @@
 
                 const folderId = event.currentTarget.getAttribute('data-folderId')
                 console.log(folderId)
-                const feDir = folderId === "Day-04-FlightWeatherInfo" ? "/frontend" : "";
+                let feDir = '';
+
+                if (folderId === "Day-04-FlightWeatherInfo") {
+                    feDir = "/frontend"
+                }
+                if (folderId === "Day-05-PhonePayVoiceMimic") {
+                    feDir = "/public";
+
+                }
+
                 window.open('/' + folderId + feDir, '_blank').focus();
             })
         })
